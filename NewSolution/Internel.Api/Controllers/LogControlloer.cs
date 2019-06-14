@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using New.Model.Log;
+using New.Model.LogDto;
 using Newtonsoft.Json;
 using NLog;
 using System;
