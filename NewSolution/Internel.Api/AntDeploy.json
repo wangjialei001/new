@@ -1,0 +1,40 @@
+﻿{
+  "Env": [
+    {
+      "Name": "new114",
+      "ServerList": [],
+      "LinuxServerList": [
+        {
+          "UserName": "root",
+          "Pwd": "693BAC2A23F73C45929A32A0C17993DB",
+          "Host": "192.168.220.114",
+          "NickName": "",
+          "IIsFireUrl": null,
+          "DockerFireUrl": "",
+          "WindowsServiceFireUrl": null
+        }
+      ],
+      "IgnoreList": [],
+      "WindowsBackUpIgnoreList": []
+    }
+  ],
+  "IIsConfig": {
+    "SdkType": null,
+    "WebSiteName": "",
+    "LastEnvName": null,
+    "EnvPairList": []
+  },
+  "WindowsServiveConfig": {
+    "ServiceName": "",
+    "SdkType": null,
+    "LastEnvName": null,
+    "EnvPairList": []
+  },
+  "DockerConfig": {
+    "Prot": "8090",
+    "AspNetCoreEnv": "",
+    "LastEnvName": "new114",
+    "RemoveDaysFromPublished": "10",
+    "Volume": ""
+  }
+}

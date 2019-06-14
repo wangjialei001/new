@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LogDashboard;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using NLog;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Internel.Api
@@ -26,6 +28,10 @@ namespace Internel.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // 自定义变量
+            LogManager.Configuration.Variables["application"] = "CustomLogModel";
+            LogManager.Configuration.Variables["requestMethod"] = "Get";
+            services.AddLogDashboard(opt => { opt.CustomLogModel<ApplicationLogModel>(); });
             services.AddSwaggerGen(c=> {
                 //配置第一个Doc
                 c.SwaggerDoc("v1", new Info { Title = "My API_1", Version = "v1" });
@@ -55,7 +61,7 @@ namespace Internel.Api
                 c.RoutePrefix = "swagger";
 
             });
-
+            app.UseLogDashboard();
             app.UseSwagger();
             app.UseHttpsRedirection();
             app.UseMvc();
