@@ -4,5 +4,17 @@
         <name>Internel.Api</name>
     </assembly>
     <members>
+        <member name="T:Internel.Api.Injection.Evaluation">
+            <summary>
+            依赖注入的模块
+            </summary>
+        </member>
+        <member name="M:Internel.Api.Startup.RegisterAutofac(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            使用Autofac 替换默认IOC
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

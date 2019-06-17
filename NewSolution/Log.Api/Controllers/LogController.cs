@@ -7,11 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Internel.Api.Controllers
+namespace Log.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LogControlloer: ControllerBase
+    public class LogController: ControllerBase
     {
         [HttpPost]
         public void Post([FromBody] LogInputDto input)

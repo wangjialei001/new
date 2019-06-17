@@ -7,17 +7,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.Internel.Api", "Web.Int
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Internel.Api", "Internel.Api\Internel.Api.csproj", "{2A9979DE-2DF1-4D8F-8CD4-15209CAFDEAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New.Core", "New.Core\New.Core.csproj", "{F4D5A070-3987-4BA6-8EA6-2724E251D312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "New.Core", "New.Core\New.Core.csproj", "{F4D5A070-3987-4BA6-8EA6-2724E251D312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New.Data", "New.Data\New.Data.csproj", "{BAA8FE60-A5A3-4448-812B-A11BF560BE15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "New.Data", "New.Data\New.Data.csproj", "{BAA8FE60-A5A3-4448-812B-A11BF560BE15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New.Common", "New.Common\New.Common.csproj", "{C13332C4-AFD4-4E6A-A1AB-416F1397E42F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "New.Common", "New.Common\New.Common.csproj", "{C13332C4-AFD4-4E6A-A1AB-416F1397E42F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{0A662BF2-5F83-40E2-AF30-02DC3C6AB8BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{0A662BF2-5F83-40E2-AF30-02DC3C6AB8BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New.Entity", "New.Entity\New.Entity.csproj", "{025D877E-BDC4-4784-B72D-B58D15226336}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "New.Entity", "New.Entity\New.Entity.csproj", "{025D877E-BDC4-4784-B72D-B58D15226336}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New.Model", "New.Model\New.Model.csproj", "{F24B8533-E4C3-4B0D-BF8D-8D56C73BCD86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "New.Model", "New.Model\New.Model.csproj", "{F24B8533-E4C3-4B0D-BF8D-8D56C73BCD86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.Log.Api", "Web.Log.Api", "{C446C54A-6712-4D19-BD75-780DA2E6DFB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log.Api", "Log.Api\Log.Api.csproj", "{680FA84F-F2D5-404B-B4B7-61D54700423F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,12 +57,17 @@ Global
 		{F24B8533-E4C3-4B0D-BF8D-8D56C73BCD86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F24B8533-E4C3-4B0D-BF8D-8D56C73BCD86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F24B8533-E4C3-4B0D-BF8D-8D56C73BCD86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{680FA84F-F2D5-404B-B4B7-61D54700423F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{680FA84F-F2D5-404B-B4B7-61D54700423F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{680FA84F-F2D5-404B-B4B7-61D54700423F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{680FA84F-F2D5-404B-B4B7-61D54700423F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2A9979DE-2DF1-4D8F-8CD4-15209CAFDEAC} = {40C81B91-26BB-4D6C-88E9-E7C85B608B7F}
+		{680FA84F-F2D5-404B-B4B7-61D54700423F} = {C446C54A-6712-4D19-BD75-780DA2E6DFB0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6357CEE1-65D9-45F0-B58D-8FEA648E0877}
