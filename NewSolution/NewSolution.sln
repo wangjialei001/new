@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "New.Model", "New.Model\New.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.Log.Api", "Web.Log.Api", "{C446C54A-6712-4D19-BD75-780DA2E6DFB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log.Api", "Log.Api\Log.Api.csproj", "{680FA84F-F2D5-404B-B4B7-61D54700423F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Log.Api", "Log.Api\Log.Api.csproj", "{680FA84F-F2D5-404B-B4B7-61D54700423F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

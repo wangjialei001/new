@@ -25,6 +25,7 @@ namespace Internel.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddSyncData();
             services.AddSwaggerGen(c=> {
                 //配置第一个Doc
                 c.SwaggerDoc("v1", new Info { Title = "My API_1", Version = "v1" });
@@ -36,6 +37,7 @@ namespace Internel.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSyncData();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -44,7 +46,6 @@ namespace Internel.Api
             {
                 app.UseHsts();
             }
-            app.UseSyncData();
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>

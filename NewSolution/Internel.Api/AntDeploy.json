@@ -31,7 +31,7 @@
     "EnvPairList": []
   },
   "DockerConfig": {
-    "Prot": "8090",
+    "Prot": "",
     "AspNetCoreEnv": "",
     "LastEnvName": "new114",
     "RemoveDaysFromPublished": "10",

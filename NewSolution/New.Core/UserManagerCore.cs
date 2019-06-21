@@ -5,15 +5,19 @@ using New.Model.User;
 using Infrastructure.Http;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using Infrastructure.SyncData.ConfigManager;
+using Infrastructure.Logger;
 
 namespace New.Core
 {
     public class UserManagerCore : IUserManagerCore
     {
         private readonly IConfiguration configuration;
-        public UserManagerCore(IConfiguration configuration)
+        private readonly IConfig config;
+        public UserManagerCore(IConfiguration configuration, IConfig config)
         {
             this.configuration = configuration;
+            this.config = config;
         }
         /// <summary>
         /// 获取用户信息
@@ -30,18 +34,8 @@ namespace New.Core
                     Name = "Jone"
                 }
             };
-            await HttpHelper.HttpPostAsync(configuration["logUrl"], JsonConvert.SerializeObject(new
-            {
-                AppName = "GetUserInfo",
-                Level = "info",
-                Message = $"Request:{JsonConvert.SerializeObject(input)};Response:{JsonConvert.SerializeObject(data)}"
-            }));
-            await HttpHelper.HttpPostAsync(configuration["logUrl"], JsonConvert.SerializeObject(new
-            {
-                AppName = "GetUserInfo",
-                Level = "error",
-                Message = $"Request:{JsonConvert.SerializeObject(input)};Response:{JsonConvert.SerializeObject(data)}"
-            }));
+            await LogCore.LogInfoAsync("Internel.Api", "GetUserInfo", $"Request:{JsonConvert.SerializeObject(input)};Response:{JsonConvert.SerializeObject(data)}");
+            await LogCore.LogErrorAsync("Internel.Api", "GetUserInfo", $"Request:{JsonConvert.SerializeObject(input)};Response:{JsonConvert.SerializeObject(data)}");
             return data;
         }
     }
