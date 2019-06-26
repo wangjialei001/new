@@ -21,19 +21,23 @@ namespace Log.Api.Controllers
             var logger = LogManager.GetLogger(input.AppName);
             try
             {
+                Console.WriteLine("start write log");
                 if (input.Level == "info")
                 {
                     logger.Info(input.Message);
+                    Console.WriteLine("info");
                 }
                 else if (input.Level == "error")
                 {
                     logger.Error($"Message:{input.Message};Exceptioin:{input.Exception}");
+                    Console.WriteLine("error");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
+            Console.WriteLine("end write log");
         }
     }
 }

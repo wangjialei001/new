@@ -25,7 +25,7 @@ namespace Internel.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddSyncData();
+            services.AddSyncData(Configuration:Configuration);
             services.AddSwaggerGen(c=> {
                 //配置第一个Doc
                 c.SwaggerDoc("v1", new Info { Title = "My API_1", Version = "v1" });
