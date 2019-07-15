@@ -2,14 +2,18 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Infrastructure.SyncData;
+using Internel.Api.Filters;
 using Internel.Api.Injection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using New.Model.Binder;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.IO;
+using System.Linq;
 
 namespace Internel.Api
 {
@@ -29,14 +33,24 @@ namespace Internel.Api
             services.AddSwaggerGen(c=> {
                 //配置第一个Doc
                 c.SwaggerDoc("v1", new Info { Title = "My API_1", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+                var basePath = AppDomain.CurrentDomain.BaseDirectory;
+                var xmlPath = Path.Combine(basePath, "Internel.Api.xml");
+                c.IncludeXmlComments(xmlPath);
+                //swagger中控制请求的时候发是否需要在url中增加accesstoken
+                c.OperationFilter<HttpHeaderOperation>();
             });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddMvcOptions(options=> {
+                    options.ModelBinderProviders.Insert(0,new MyModelBinderProvider());
+                });
             return RegisterAutofac(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            //app.DecryptAndEncrypt();
             app.UseSyncData();
             if (env.IsDevelopment())
             {

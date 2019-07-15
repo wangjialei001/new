@@ -4,6 +4,18 @@
         <name>Internel.Api</name>
     </assembly>
     <members>
+        <member name="M:Internel.Api.Controllers.UserMangerController.QueryAuthorInfo(New.Model.User.Author{New.Model.User.Book})">
+            <summary>
+            测试Binder
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Internel.Api.Filters.HttpHeaderOperation">
+            <summary>
+            在 Swagger UI 中显示自定义的 Header或者在url中增加query参数
+            </summary>
+        </member>
         <member name="T:Internel.Api.Injection.Evaluation">
             <summary>
             依赖注入的模块
