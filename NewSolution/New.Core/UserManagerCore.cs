@@ -31,13 +31,12 @@ namespace New.Core
                 Code = 200,
                 Data = new UserInfoDto
                 {
-                    Name = "Jone"
+                    Name = input.Name
                 }
             };
             string message =JsonConvert.SerializeObject(input);
-            Log(message);
             await LogCore.LogInfoAsync("Internel.Api", "GetUserInfo", $"Request:{message};Response:{JsonConvert.SerializeObject(data)}");
-            await LogCore.LogErrorAsync("Internel.Api", "GetUserInfo", $"Request:{message};Response:{JsonConvert.SerializeObject(data)}");
+            //await LogCore.LogErrorAsync("Internel.Api", "GetUserInfo", $"Request:{message};Response:{JsonConvert.SerializeObject(data)}");
             return data;
         }
         private void Log(string message)

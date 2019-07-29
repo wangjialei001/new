@@ -22,6 +22,7 @@ namespace Internel.Api.Controllers
         [HttpPost]
         public async Task<ResultWrapper<UserInfoDto>> QueryUserInfo([FromBody]GetUserInfoDto input)
         {
+            Console.WriteLine("测试");
             return await userManager.GetUserInfo(input);
         }
         /// <summary>
