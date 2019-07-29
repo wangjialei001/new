@@ -4,7 +4,7 @@
         <name>Internel.Api</name>
     </assembly>
     <members>
-        <member name="M:Internel.Api.Controllers.UserMangerController.QueryAuthorInfo(New.Model.User.Author{New.Model.User.Book})">
+        <member name="M:Internel.Api.Controllers.UserMangerController.QueryAuthorInfo(New.Model.User.AuthorBase)">
             <summary>
             测试Binder
             </summary>
@@ -20,6 +20,12 @@
             <summary>
             依赖注入的模块
             </summary>
+        </member>
+        <member name="M:Internel.Api.Injection.Evaluation.Load(Autofac.ContainerBuilder)">
+            <summary>
+            重写Load方法，进行依赖的注入
+            </summary>
+            <param name="builder"></param>
         </member>
         <member name="M:Internel.Api.Startup.RegisterAutofac(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>

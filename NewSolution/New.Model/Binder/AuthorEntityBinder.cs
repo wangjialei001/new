@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using New.Model.User;
 using Newtonsoft.Json;
@@ -36,14 +37,17 @@ namespace New.Model.Binder
             //{
             //    bindingContext.Model = bindingContext.HttpContext.Request.Form.Files[0];
             //}
-            using (var reader = new StreamReader(bindingContext.HttpContext.Request.Body))
-            {
-                var body = reader.ReadToEnd();
-                var modelType = bindingContext.ModelType;
-                //bindingContext.Model = body;// JsonConvert.DeserializeObject<Author>(body);
-                //bindingContext.Result = ModelBindingResult.Success(bindingContext.Model);
-                bindingContext.Result = ModelBindingResult.Success(body);
-            }
+            //if (!bindingContext.ModelType.FullName.Contains("New.Model.User.AuthorBase"))
+            //{
+            //    throw new Exception("不是AuthorBase对象");
+            //}
+            //using (var reader = new StreamReader(bindingContext.HttpContext.Request.Body))
+            //{
+            //    var body = reader.ReadToEnd();
+            //    bindingContext.Model = JsonConvert.DeserializeObject<AuthorBase>(body);
+            //    bindingContext.Result = ModelBindingResult.Success(bindingContext.Model);
+            //}
+
             return Task.CompletedTask;
         }
     }

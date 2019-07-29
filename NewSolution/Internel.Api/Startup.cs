@@ -41,9 +41,9 @@ namespace Internel.Api
                 c.OperationFilter<HttpHeaderOperation>();
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddMvcOptions(options=> {
-                    options.ModelBinderProviders.Insert(0,new MyModelBinderProvider());
-                });
+                .AddMvcOptions(options => {
+                    //options.ModelBinderProviders.Insert(0,new MyModelBinderProvider());
+                }).AddControllersAsServices();//否则AuthorizationInterceptor不起作用
             return RegisterAutofac(services);
         }
 

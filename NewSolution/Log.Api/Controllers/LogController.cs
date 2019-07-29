@@ -12,7 +12,7 @@ namespace Log.Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class LogController: ControllerBase
-    {
+    {//{"AppName":"GwHomeAppApi","Level":"info","Message":"192.168.60.21:80;","ProcName":"GetVocherList","LoginID":"1643139914902016000","SourceType":"Android","Category":""}
         [HttpPost]
         public void Post([FromBody] LogInputDto input)
         {

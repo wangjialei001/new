@@ -28,8 +28,9 @@ namespace New.Common.Interceptors
                 {
                     Console.WriteLine($"Key:{item.Key}, Value:{item.Value}");
                 }
-                controller.Request.Headers.TryGetValue("companycode", out StringValues companyCode);
+                controller.Request.Query.TryGetValue("companycode", out StringValues companyCode);
                 controller.Request.Headers.TryGetValue("admdivcode", out StringValues admDivCode);
+
                 if (string.IsNullOrWhiteSpace(companyCode))
                 {
                     throw new Exception("companyCode is blank in header！");
@@ -40,7 +41,6 @@ namespace New.Common.Interceptors
                 }
 
                 Console.WriteLine($"接收到的参数为：{JsonConvert.SerializeObject(parameter)}！");
-                Console.WriteLine($"接收到的companyCode：{companyCode},admDivCode:{admDivCode}！");
 
                 if (companyCode.ToString() != parameter.CompanyCode && admDivCode != parameter.AdmDivCode.ToString())
                 {

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Internel.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UserMangerController : ControllerBase
     {
@@ -20,7 +20,6 @@ namespace Internel.Api.Controllers
             this.userManager = userManager;
         }
         [HttpPost]
-        [Route("QueryUserInfo")]
         public async Task<ResultWrapper<UserInfoDto>> QueryUserInfo([FromBody]GetUserInfoDto input)
         {
             return await userManager.GetUserInfo(input);
@@ -31,11 +30,10 @@ namespace Internel.Api.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("QueryAuthorInfo")]
         [AuthorizationInterceptor]
-        public async Task<ResultWrapper<Author<Book>>> QueryAuthorInfo([FromBody]Author<Book> input)
+        public virtual async Task<ResultWrapper<AuthorBase>> QueryAuthorInfo(AuthorBase input)
         {
-            return await Task.FromResult(new ResultWrapper<Author<Book>> { Data= input });
+            return await Task.FromResult(new ResultWrapper<AuthorBase> { Data= input });
         }
     }
 }
