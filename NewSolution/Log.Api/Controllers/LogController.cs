@@ -22,6 +22,7 @@ namespace Log.Api.Controllers
             var logger = LogManager.GetLogger(input.AppName);
             try
             {
+                var ip = HttpContext.GetClientUserIp();
                 Console.WriteLine("start write log");
                 if (input.Level == "info")
                 {

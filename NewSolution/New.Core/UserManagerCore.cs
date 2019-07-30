@@ -36,6 +36,7 @@ namespace New.Core
             };
             string message =JsonConvert.SerializeObject(input);
             await LogCore.LogInfoAsync("Internel.Api", "GetUserInfo", $"Request:{message};Response:{JsonConvert.SerializeObject(data)}");
+            //LogCore.LogInfo("Internel.Api", "GetUserInfo", $"Request:{message};Response:{JsonConvert.SerializeObject(data)}");
             //await LogCore.LogErrorAsync("Internel.Api", "GetUserInfo", $"Request:{message};Response:{JsonConvert.SerializeObject(data)}");
             return data;
         }

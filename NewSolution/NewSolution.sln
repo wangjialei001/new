@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Log.Api", "Log.Api\Log.Api.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{32DBB43B-29E0-44F7-9380-BA6A1CE85A14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "New.WebApp", "New.WebApp\New.WebApp.csproj", "{1063A86F-EDCC-4CF8-96EE-1F09EC61BAB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "New.WebApp", "New.WebApp\New.WebApp.csproj", "{1063A86F-EDCC-4CF8-96EE-1F09EC61BAB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
