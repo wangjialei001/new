@@ -2,6 +2,8 @@
 using Infrastructure.SyncData.ConfigManager;
 using Microsoft.Extensions.Configuration;
 using New.Common;
+using New.Data;
+using New.Entity;
 using New.Model.User;
 using Newtonsoft.Json;
 using System;
@@ -19,6 +21,20 @@ namespace New.Core
             this.configuration = configuration;
             this.config = config;
         }
+
+        public async Task<string> GetUser(string voucherId)
+        {
+            string r = string.Empty;
+            using (var db = BaseDbContext.SqlServerDb("dbSqlServer"))
+            {
+                var result = await db.FirstAsync<VoucherSync>(t => t.VoucherId == voucherId);
+                if (result != null)
+                    r = JsonConvert.SerializeObject(result);
+                await db.AddAsync(new VoucherSync { VoucherId = Guid.NewGuid().ToString("N") });
+            }
+            return r;
+        }
+
         /// <summary>
         /// 获取用户信息
         /// </summary>

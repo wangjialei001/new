@@ -15,5 +15,6 @@ namespace New.Core
         /// <param name="input"></param>
         /// <returns></returns>
         Task<ResultWrapper<UserInfoDto>> GetUserInfo(GetUserInfoDto input);
+        Task<string> GetUser(string voucherId);
     }
 }

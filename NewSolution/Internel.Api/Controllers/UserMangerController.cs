@@ -36,5 +36,10 @@ namespace Internel.Api.Controllers
         {
             return await Task.FromResult(new ResultWrapper<AuthorBase> { Data= input });
         }
+        [HttpGet]
+        public async Task<string> GetUser(string voucherId)
+        {
+            return await userManager.GetUser(voucherId);
+        }
     }
 }

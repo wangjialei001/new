@@ -15,10 +15,13 @@ namespace New.Data
     public class SugerRepository:ISugerHandler
     {
         private readonly IConfiguration configuration;
+        public SugerRepository() { }
         public SugerRepository(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
+
+        public SqlSugarClient DbContext { get; set; }
 
         public int Add<T>(T entity) where T : class, new()
         {
@@ -35,9 +38,17 @@ namespace New.Data
             throw new NotImplementedException();
         }
 
-        public Task<int> AddAsync<T>(T entity) where T : class, new()
+        public async Task<int> AddAsync<T>(T entity) where T : class, new()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = await DbContext.Insertable(entity).ExecuteCommandAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Task<int> AddAsync<T>(List<T> entitys) where T : class, new()
@@ -235,9 +246,9 @@ namespace New.Data
             throw new NotImplementedException();
         }
 
-        public Task<T> FirstAsync<T>(Expression<Func<T, bool>> whereLambda) where T : class, new()
+        public async Task<T> FirstAsync<T>(Expression<Func<T, bool>> whereLambda) where T : class, new()
         {
-            throw new NotImplementedException();
+            return await DbContext.Queryable<T>().With(SqlWith.NoLock).Where(whereLambda).FirstAsync();
         }
 
         public List<DbColumnInfo> GetColumnInfosByTableName(string tableName, bool isCache = true)

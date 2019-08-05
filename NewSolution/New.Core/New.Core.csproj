@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\New.Common\New.Common.csproj" />
+    <ProjectReference Include="..\New.Data\New.Data.csproj" />
+    <ProjectReference Include="..\New.Entity\New.Entity.csproj" />
     <ProjectReference Include="..\New.Model\New.Model.csproj" />
   </ItemGroup>
 

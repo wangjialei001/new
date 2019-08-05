@@ -15,6 +15,7 @@ namespace New.Data
     /// </summary>
     public interface ISugerHandler : IDisposable
     {
+        SqlSugarClient DbContext { get; set; }
 
         #region 事务
 
