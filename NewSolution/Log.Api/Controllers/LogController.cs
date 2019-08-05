@@ -23,17 +23,22 @@ namespace Log.Api.Controllers
             try
             {
                 var ip = HttpContext.GetClientUserIp();
-                Console.WriteLine("start write log");
-                if (input.Level == "info")
-                {
-                    logger.Info(input.Message);
-                    Console.WriteLine("info");
-                }
-                else if (input.Level == "error")
-                {
-                    logger.Error($"Message:{input.Message};Exceptioin:{input.Exception}");
-                    Console.WriteLine("error");
-                }
+                LogLevel level = LogLevel.FromString(input.Level);
+                var eventInfo = new LogEventInfo(level, logger.Name, input.Message);
+                eventInfo.Properties["CustomValue"] = "My custom string"+ip;
+                logger.Log(eventInfo);
+                
+                //Console.WriteLine("start write log");
+                //if (input.Level == "info")
+                //{
+                //    logger.Info(input.Message);
+                //    Console.WriteLine("info");
+                //}
+                //else if (input.Level == "error")
+                //{
+                //    logger.Error($"Message:{input.Message};Exceptioin:{input.Exception}");
+                //    Console.WriteLine("error");
+                //}
             }
             catch (Exception ex)
             {

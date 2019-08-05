@@ -23,6 +23,6 @@ namespace Log.Api
             .ConfigureLogging(logging=> {
                 logging.ClearProviders();
                 logging.SetMinimumLevel(LogLevel.Trace);
-            }).UseNLog();
+            }).UseNLog();//NLog: setup NLog for Dependency injection
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
@@ -72,6 +73,45 @@ namespace UnitTestProject
             {
                 return string.Empty;
             }
+        }
+        [Fact]
+        public void Test3()
+        {
+            var eT = T1.TT;
+            var i1 = (int)eT;
+            var i = (int)T1.TT;
+        }
+        public enum T1
+        {
+            TT=1
+        }
+
+        [Fact]
+        public void Test2()
+        {
+            List<Item> items = new List<Item>
+            {
+                new Item{ Id="1"},
+                new Item{ Id="2"},
+                new Item{ Id="3,4"},
+                new Item{ Id="5,6"},
+                new Item{ Id="7,8"},
+                new Item{ },
+                new Item{ Id="9,10,"},
+            };
+            var r = items.Where(t => t.Id != null && t.Id != "").Select(t => t.Id).SelectMany(t=> {
+                return t.TrimEnd(',').Split(',');
+            }).ToList();
+            var its = new List<Item> {
+                new Item{ Id="1"},
+                new Item{ Id="4"}
+            };
+            items.RemoveAll(t=>!its.Select(i=>i.Id).Contains(t.Id));
+        }
+        public class Item
+        {
+            public string Id { get; set; }
+            public string Name { get; set; }
         }
     }
 }

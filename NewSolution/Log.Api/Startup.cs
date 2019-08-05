@@ -14,6 +14,8 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace Log.Api
 {
+    /*NLog官方地址
+    https://github.com/NLog/NLog/wiki/Getting-started-with-ASP.NET-Core-2 */
     public class Startup
     {
         public Startup(IConfiguration configuration)
