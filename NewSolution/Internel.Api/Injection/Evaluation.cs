@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using New.Core;
+using New.Data.SqlServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Internel.Api.Injection
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(typeof(UserManagerCore).Assembly).Where(t => t.Name.EndsWith("Core")).AsImplementedInterfaces();
+            builder.RegisterType<SqlServerSugerRepository>().As<ISqlServerSugerHandler>().InstancePerLifetimeScope();
         }
     }
 }

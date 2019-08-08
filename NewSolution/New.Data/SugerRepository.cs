@@ -14,14 +14,7 @@ namespace New.Data
 {
     public class SugerRepository:ISugerHandler
     {
-        private readonly IConfiguration configuration;
-        public SugerRepository() { }
-        public SugerRepository(IConfiguration configuration)
-        {
-            this.configuration = configuration;
-        }
-
-        public SqlSugarClient DbContext { get; set; }
+        internal virtual SqlSugarClient DbContext { get; set; }
 
         public int Add<T>(T entity) where T : class, new()
         {
@@ -193,7 +186,8 @@ namespace New.Data
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            DbContext.Ado.Dispose();
+            DbContext.Dispose();
         }
 
         public bool DropColumn(string tableName, string columnName)

@@ -14,27 +14,26 @@ namespace New.Data
 {
     public class BaseDbContext
     {
-        private static ConcurrentDictionary<string, SqlServerSugerRepository> sugarSqlServerDic = new ConcurrentDictionary<string, SqlServerSugerRepository>();
         public static SqlServerSugerRepository SqlServerDb(string dbKey)
         {
-            SqlServerSugerRepository sqlServerSugerRepository = null;
-            if (!sugarSqlServerDic.TryGetValue(dbKey, out sqlServerSugerRepository) || sqlServerSugerRepository == null)
-            {
-                var connStr = ConfigHelper.GetValue(dbKey);
-                try
-                {
-                    sqlServerSugerRepository = new SqlServerSugerRepository();
-                    sqlServerSugerRepository.DbContext = InitDataBase(connStr.Split('|').ToList());
-                    sugarSqlServerDic.AddOrUpdate(dbKey, sqlServerSugerRepository, (_dbKey,_sqlSuger) => {
-                        return sqlServerSugerRepository;
-                    });
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
+            var connStr = ConfigHelper.GetValue(dbKey);
+            SqlServerSugerRepository sqlServerSugerRepository = new SqlServerSugerRepository();
+            sqlServerSugerRepository.DbContext = InitDataBase(connStr.Split('|').ToList());
             return sqlServerSugerRepository;
+        }
+        public static SqlSugarClient SqlSugarClient(string dbKey)
+        {
+            SqlSugarClient sqlSugarClient = null;
+            var connStr = ConfigHelper.GetValue(dbKey);
+            try
+            {
+                sqlSugarClient = InitDataBase(connStr.Split('|').ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return sqlSugarClient;
         }
         /// <summary>
         /// 初始化数据库连接
@@ -42,7 +41,7 @@ namespace New.Data
         /// <param name="listConn">连接字符串</param>
         /// <param name="dbType"></param>
         /// <returns></returns>
-        private static SqlSugarClient InitDataBase(List<string> listConn, DbType dbType = DbType.SqlServer)
+        internal static SqlSugarClient InitDataBase(List<string> listConn, DbType dbType = DbType.SqlServer)
         {
             var connStr = "";//主库
             var slaveConnectionConfigs = new List<SlaveConnectionConfig>();//从库集合
