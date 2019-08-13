@@ -30,7 +30,7 @@ namespace New.Core
             string r = string.Empty;
             //try
             //{
-            //    using (var db = BaseDbContext.SqlServerDb("dbSqlServer"))
+            //    using (var db = BaseDbContext.SqlServerDb("dbSqlServer"))//并发有问题
             //    {
             //        var result = await db.FirstAsync<VoucherSync>(t => t.VoucherId == voucherId);
             //        if (result != null)
