@@ -41,5 +41,11 @@ namespace Internel.Api.Controllers
         {
             return await userManager.GetUser(voucherId);
         }
+        [HttpPost]
+        public async Task<ResultWrapper<UserInfoDto>> QueryUserInfo1(UserInfoDto input)
+        {
+            Console.WriteLine("测试");
+            return await Task.FromResult(new ResultWrapper<UserInfoDto> { Data = input });
+        }
     }
 }

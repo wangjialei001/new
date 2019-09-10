@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using New.Model.Binder;
+using New.Service;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
@@ -29,6 +30,7 @@ namespace Internel.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddHostedService<TaskBackgroundService>();
             services.AddSyncData(Configuration);
             services.AddSwaggerGen(c=> {
                 //配置第一个Doc
