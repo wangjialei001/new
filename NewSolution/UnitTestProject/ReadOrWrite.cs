@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Security;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
@@ -105,6 +106,20 @@ namespace UnitTestProject
             {
                 return string.Empty;
             }
+        }
+        [Fact]
+        public void GetTableName()
+        {
+            string prefix = "T_GWZJ_VoucherHolder_Related"; string key = "YGO03831";
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(key));
+            string str= $"{prefix.TrimEnd('_')}_{Math.Abs(BitConverter.ToInt64(hash, 0)) % 16}";
+        }
+        [Fact]
+        public void GetTimeStampLong()
+        {
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            var ls = Convert.ToInt64(ts.TotalSeconds);
         }
     }
 }

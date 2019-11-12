@@ -35,6 +35,15 @@
     "AspNetCoreEnv": "",
     "LastEnvName": "new114",
     "RemoveDaysFromPublished": "10",
-    "Volume": ""
+    "Volume": "",
+    "EnvPairList": [
+      {
+        "EnvName": "new114",
+        "ConfigName": null,
+        "DockerPort": "",
+        "DockerEnvName": "",
+        "DockerVolume": ""
+      }
+    ]
   }
 }
