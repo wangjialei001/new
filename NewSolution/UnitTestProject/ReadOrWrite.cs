@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace UnitTestProject
 {
@@ -110,16 +111,62 @@ namespace UnitTestProject
         [Fact]
         public void GetTableName()
         {
-            string prefix = "T_GWZJ_VoucherHolder_Related"; string key = "YGO03831";
+            string prefix = "T_GWZJ_VoucherHolder_Related"; string key = "YGO02983";
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
             var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(key));
             string str= $"{prefix.TrimEnd('_')}_{Math.Abs(BitConverter.ToInt64(hash, 0)) % 16}";
+            Output.WriteLine(str);
         }
         [Fact]
         public void GetTimeStampLong()
         {
             TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
             var ls = Convert.ToInt64(ts.TotalSeconds);
+        }
+        private readonly object obj = new object();
+        [Fact]
+        public void Tasks()
+        {
+            int count = 0;
+            
+            List<Task> tasks = new List<Task>();
+            for(int i = 0; i < 16; i++)
+            {
+                tasks.Add(Task.Run(()=> {
+                    count += Tk(i);
+                }));
+            }
+            Task.WaitAll(tasks.ToArray());
+            Console.WriteLine(count);
+            Output.WriteLine(count.ToString());
+        }
+        private int Tk(int n)
+        {
+            Thread.Sleep(1000);
+            Console.WriteLine(n.ToString());
+            return 1;
+        }
+
+        protected readonly ITestOutputHelper Output;
+        public ReadOrWrite(ITestOutputHelper Output)
+        {
+            this.Output = Output;
+        }
+        [Fact]
+        public async void MyTest()
+        {
+            int n1 = await GetVAsync(1);
+            Output.WriteLine($"MyTest:{n1}");
+            int n2 = await GetVAsync(2);
+            Output.WriteLine($"MyTest:{n2}");
+            Output.WriteLine($"MyTest:{Thread.CurrentThread.ManagedThreadId}");
+        }
+        public async Task<int> GetVAsync(int i)
+        {
+            //Thread.Sleep(1000);
+            await Task.Delay(1000);
+            Output.WriteLine($"GetVAsync:{i};{Thread.CurrentThread.ManagedThreadId}");
+            return await Task.FromResult(i);
         }
     }
 }
