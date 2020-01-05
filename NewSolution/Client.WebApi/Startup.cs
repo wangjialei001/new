@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Client.WebApi.Filter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,9 @@ namespace Client.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvcCore()
+            services.AddMvcCore(config => {
+                config.Filters.Add(new TestAuthorizationFilter());
+            })
             .AddAuthorization()
             .AddJsonFormatters();
             //指定认证方案

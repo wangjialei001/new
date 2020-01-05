@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Client.WebApi.Filter;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +14,13 @@ namespace Client.WebApi.Controllers
     {
         // GET api/values
         [HttpGet]
-        [Authorize]
+        [TestAuthorize("Value_Get")]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new JsonResult(
+                from c in HttpContext.User.Claims select new { c.Type, c.Value }
+                );
+            //return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
