@@ -47,9 +47,22 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{DF3F5E10-9882-447D-B9A4-C2C2FFD7FBE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.WebApi", "AuthService.WebApi\AuthService.WebApi.csproj", "{CD35A0A6-0E35-44D6-B1D4-BC1D860557BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService.WebApi", "AuthService.WebApi\AuthService.WebApi.csproj", "{CD35A0A6-0E35-44D6-B1D4-BC1D860557BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.WebApi", "Client.WebApi\Client.WebApi.csproj", "{7051B692-9983-4E15-82A4-1530B98E0DB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.WebApi", "Client.WebApi\Client.WebApi.csproj", "{7051B692-9983-4E15-82A4-1530B98E0DB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp", "WindowsFormsApp\WindowsFormsApp.csproj", "{9A061DCC-930D-47E2-8E52-B21C9B421555}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{FFD5A648-287F-498A-B491-FD74FB392FBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppSocket", "WebAppSocket\WebAppSocket.csproj", "{7A6AB8FF-14B9-4CA1-9F20-2AB01A87F4A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{BF647C6D-21B1-498F-9D3E-3DC2CD7F37C3}"
+	ProjectSection(SolutionItems) = preProject
+		Views\index.html = Views\index.html
+		Views\index2.html = Views\index2.html
+		Views\jquery-3.4.1.min.js = Views\jquery-3.4.1.min.js
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,6 +146,14 @@ Global
 		{7051B692-9983-4E15-82A4-1530B98E0DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7051B692-9983-4E15-82A4-1530B98E0DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7051B692-9983-4E15-82A4-1530B98E0DB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A061DCC-930D-47E2-8E52-B21C9B421555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A061DCC-930D-47E2-8E52-B21C9B421555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A061DCC-930D-47E2-8E52-B21C9B421555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A061DCC-930D-47E2-8E52-B21C9B421555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A6AB8FF-14B9-4CA1-9F20-2AB01A87F4A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A6AB8FF-14B9-4CA1-9F20-2AB01A87F4A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A6AB8FF-14B9-4CA1-9F20-2AB01A87F4A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A6AB8FF-14B9-4CA1-9F20-2AB01A87F4A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,6 +168,7 @@ Global
 		{490E3303-83A5-48F6-906B-0DD79180B8F9} = {D7073AB1-9BEA-44AB-B1A8-D032E7FAF12C}
 		{CD35A0A6-0E35-44D6-B1D4-BC1D860557BD} = {DF3F5E10-9882-447D-B9A4-C2C2FFD7FBE2}
 		{7051B692-9983-4E15-82A4-1530B98E0DB5} = {DF3F5E10-9882-447D-B9A4-C2C2FFD7FBE2}
+		{7A6AB8FF-14B9-4CA1-9F20-2AB01A87F4A1} = {FFD5A648-287F-498A-B491-FD74FB392FBB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6357CEE1-65D9-45F0-B58D-8FEA648E0877}

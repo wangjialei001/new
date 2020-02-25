@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        var socket;
+        var uri = "ws://localhost:5000" + "/WebSocketTest";
+        var output;
+        var text = { 'State': 0 };
+
+        $(function () {
+            //if (socket.readyState === 1) {
+            //    doclose();
+            //}
+
+            load_init();
+        });
+
+        function load_init() {
+            socket = new WebSocket(uri);
+
+            setTimeout(function () {
+                console.log(socket.readyState);
+                socket.send(JSON.stringify(text));//发送
+                //doSend();
+
+                onInit();
+            }, 1000);
+
+
+
+            //doSend();
+
+
+
+        }
+        //接受 
+        function write(s) {
+
+
+            //console.log(s);
+
+
+            if (socket.readyState === 1) {
+                socket.send(JSON.stringify(text));
+            } else {
+                //do something
+            }
+        }
+
+        function doConnect() {
+            //alert(2);
+            socket.onopen = function (e) { write("opened " + uri); };
+            socket.onclose = function (e) { doConnect(); };
+            socket.onmessage = function (e) { write(e.data); };
+            socket.onerror = function (e) { console.log(e); write("Error: " + e.data); };
+        }
+
+        function doSend() {
+
+            //添加事件监听
+            socket.addEventListener('open', function () {
+                //write("Sending: " + text);
+                socket.send(JSON.stringify(text));
+            });
+
+        }
+        function onInit() {
+
+            output = document.getElementById("output");
+            doConnect();
+        }
+
+        function doclose() {
+            socket.onclose = function (e) {
+                console.log(e);
+                socket.close(); //关闭TCP连接
+            }
+        }
+
+        //window.onload = onInit;
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+</html>
