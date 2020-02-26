@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Log.Api.AppSettingModel;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -6,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using NLog.Config;
 using NLog.Extensions.Logging;
 using NLog.Web;
 using NLog.Web.LayoutRenderers;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
 
 namespace Log.Api
 {
@@ -21,6 +24,8 @@ namespace Log.Api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
+
         }
 
         public IConfiguration Configuration { get; }
@@ -28,6 +33,9 @@ namespace Log.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var config = new ConfigurationBuilder().AddJsonFile("jsConfig.json").Build();
+            services.Configure<JsConfigModel>(config);
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSwaggerGen(c =>
             {
@@ -38,8 +46,10 @@ namespace Log.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,ILoggerFactory loggerFactory,IOptions<JsConfigModel> options)
         {
+            Console.WriteLine(options.Value.Name);
+
             #region 解决Ubuntu Nginx 代理不能获取IP问题
             //app.UseForwardedHeaders(new ForwardedHeadersOptions
             //{
