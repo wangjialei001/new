@@ -16,6 +16,7 @@ using System;
 using System.IO;
 using System.Linq;
 
+
 namespace Internel.Api
 {
     public class Startup
@@ -30,6 +31,7 @@ namespace Internel.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<CusExceptionFilter>();//注入到容器中
             services.AddHostedService<TaskBackgroundService>();
             services.AddSyncData(Configuration);
             services.AddSwaggerGen(c=> {
@@ -42,6 +44,9 @@ namespace Internel.Api
                 //swagger中控制请求的时候发是否需要在url中增加accesstoken
                 c.OperationFilter<HttpHeaderOperation>();
             });
+            services.AddMvc(options=> {
+                options.Filters.Add(typeof(ResourceFilterAttribute));
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddMvcOptions(options => {
                     //options.ModelBinderProviders.Insert(0,new MyModelBinderProvider());
@@ -52,7 +57,7 @@ namespace Internel.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //app.DecryptAndEncrypt();
+            app.DecryptAndEncrypt();
             app.UseSyncData();
             if (env.IsDevelopment())
             {

@@ -23,9 +23,10 @@ namespace Internel.Api
         }
         public async Task Invoke(HttpContext context)
         {
-            context.Response.ContentType = "text/plain";
-            await context.Response.WriteAsync("ffff");
-            return;
+            await _next(context);
+            //context.Response.ContentType = "text/plain;utf-8";
+
+            //await context.Response.WriteAsync("这个一个中间件");
         }
     }
 }

@@ -22,6 +22,7 @@
     <PackageReference Include="AspectCore.Extensions.Autofac" Version="1.2.0" />
     <PackageReference Include="Autofac.Configuration" Version="4.1.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
+    <PackageReference Include="Infrastructure.EncryptAndDecrypt" Version="1.0.0" />
     <PackageReference Include="Infrastructure.SyncData" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />

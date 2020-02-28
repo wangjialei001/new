@@ -11,6 +11,11 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="T:Internel.Api.Filters.CusFactoryFilterAttribute">
+            <summary>
+            自定filter工厂（类似于SerivceFilter）
+            </summary>
+        </member>
         <member name="T:Internel.Api.Filters.HttpHeaderOperation">
             <summary>
             在 Swagger UI 中显示自定义的 Header或者在url中增加query参数

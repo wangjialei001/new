@@ -1,5 +1,4 @@
-﻿using GWHome.RocketMQ.Core;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using NewLife.Log;
 using NewLife.RocketMQ;
 using System;
