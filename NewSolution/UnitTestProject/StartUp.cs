@@ -25,13 +25,19 @@ namespace UnitTestProject
             //{
             //    config.Interceptors.AddTyped<CustomInterceptorAttribute>();//全局拦截的拦截器
             //});
+            serviceCollection.ConfigureDynamicProxy(config =>
+            {
+                config.Interceptors.AddTyped<CustomInterceptorAttribute>(Predicates.ForMethod("*Query")); //拦截所有Query后缀的方法
+                config.Interceptors.AddTyped<CustomInterceptorAttribute>(Predicates.ForService("*Repository")); //拦截所有Repository后缀的类或接口
+                config.Interceptors.AddTyped<CustomInterceptorAttribute>(Predicates.ForNameSpace("AspectCoreDemo.*")); //拦截所有AspectCoreDemo及其子命名空间下面的接口或类
+            });
             serviceCollection.AddTransient<ICustomService, CustomService>();
             ServiceProvider = serviceCollection.BuildDynamicProxyProvider();
         }
 
         public ServiceProvider ServiceProvider { get; private set; }
 
-        
+
     }
     public class StartUp : IClassFixture<DependencySetupFixture>
     {
@@ -51,7 +57,20 @@ namespace UnitTestProject
             var result = customService.Call(9, customer);
             output.WriteLine(JsonConvert.SerializeObject(result));
         }
-
+        [Fact]
+        public void query()
+        {
+            customService = serviceProvider.GetRequiredService<ICustomService>();
+            var customer = customService.CustomerQuery(2);
+            output.WriteLine(JsonConvert.SerializeObject(customer));
+        }
+        [Fact]
+        public void query1()
+        {
+            customService = serviceProvider.GetRequiredService<ICustomService>();
+            var customer = customService.QueryCustomer(1);
+            output.WriteLine(JsonConvert.SerializeObject(customer));
+        }
 
         public ITestOutputHelper output;
     }

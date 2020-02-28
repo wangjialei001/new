@@ -11,5 +11,7 @@ namespace New.Core
         //[CustomInterceptor]//
         [ServiceInterceptor(typeof(CustomInterceptorAttribute))]
         Customer Call(int i, Customer customer);
+        Customer CustomerQuery(int id);
+        Customer QueryCustomer(int id);
     }
 }
