@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Internel.Api.Consul;
+using Microsoft.Extensions.Configuration;
 
 namespace Internel.Api
 {
@@ -7,7 +9,8 @@ namespace Internel.Api
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var config = new ConfigurationBuilder().AddCommandLine(args).Build();
+            CreateWebHostBuilder(args).UseConfiguration(config).Build().AddConsul().Run();
         }
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)

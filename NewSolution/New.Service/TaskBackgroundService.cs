@@ -26,18 +26,25 @@ namespace New.Service
         }
         public override Task StartAsync(CancellationToken cancellationToken)
         {
-            mq.OnConsume = (q, ms) =>
+            try
             {
-                Console.WriteLine($"[{q.BrokerName}@{q.QueueId}]收到消息[{ms.Length}]");
-                foreach (var item in ms)
+                mq.OnConsume = (q, ms) =>
                 {
-                    XTrace.Log.Info("标签：" + item.Tags + ",消息体：" + item.BodyString);
-                    Console.WriteLine("消息体：" + item.BodyString);
-                }
-                return true;
-            };
-            mq.Start();
-            Console.WriteLine("任务启动。。。");
+                    Console.WriteLine($"[{q.BrokerName}@{q.QueueId}]收到消息[{ms.Length}]");
+                    foreach (var item in ms)
+                    {
+                        XTrace.Log.Info("标签：" + item.Tags + ",消息体：" + item.BodyString);
+                        Console.WriteLine("消息体：" + item.BodyString);
+                    }
+                    return true;
+                };
+                mq.Start();
+                Console.WriteLine("任务启动。。。");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return Task.CompletedTask;
         }
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
