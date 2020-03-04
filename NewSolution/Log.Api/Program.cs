@@ -18,7 +18,7 @@ namespace Log.Api
             CreateWebHostBuilder(args).Build().Run();
         }
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            WebHost.CreateDefaultBuilder(args).UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
             .ConfigureLogging(logging=> {
                 logging.ClearProviders();

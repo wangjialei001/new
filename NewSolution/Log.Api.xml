@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Log.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Log.Api.Extension.GetClientUserIp(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取客户Ip
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

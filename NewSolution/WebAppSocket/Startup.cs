@@ -36,6 +36,7 @@ namespace WebAppSocket
             {
                 app.UseDeveloperExceptionPage();
             }
+            Console.WriteLine("静态文件路径："+Path.Combine(Directory.GetCurrentDirectory(), "Views"));
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Views")),

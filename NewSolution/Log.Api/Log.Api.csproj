@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\test\new\NewSolution\Log.Api\Log.Api.xml</DocumentationFile>
+    <DocumentationFile>..\\Log.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,6 +37,9 @@
 
   <ItemGroup>
     <None Update="Dockerfile">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Log.Api.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
