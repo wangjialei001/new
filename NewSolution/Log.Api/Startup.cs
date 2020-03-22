@@ -73,13 +73,27 @@ namespace Log.Api
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
             // specifying the Swagger JSON endpoint.
             var serviceName = configuration["serviceName"];
+            //app.UseSwaggerUI(c =>
+            //{
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            //    c.RoutePrefix = "swagger";
+            //});
+
+            app.UseSwagger(c =>
+            {
+                //c.RouteTemplate = "scheduler/api-docs/{documentName}/swagger.json";
+                c.RouteTemplate = serviceName + "/{documentName}/swagger.json";
+            });
+
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                c.RoutePrefix = "swagger";
+                //c.RoutePrefix = "scheduler/api-docs";
+                //c.SwaggerEndpoint("/scheduler/api-docs/v1/swagger.json", "Scheduler API v1");
+                c.RoutePrefix = serviceName;
+                c.SwaggerEndpoint($"/{serviceName}/v1/swagger.json", "My API_1");
             });
-            
-            
+
+
             app.UseSwagger();
             app.UseMvc();
         }
