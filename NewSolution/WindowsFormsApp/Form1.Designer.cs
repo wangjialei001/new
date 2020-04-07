@@ -28,34 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSync = new System.Windows.Forms.Button();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.txtFileName = new System.Windows.Forms.TextBox();
+            this.cbBoxType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // btnSync
+            // btnOpenFile
             // 
-            this.btnSync.Location = new System.Drawing.Point(99, 63);
-            this.btnSync.Name = "btnSync";
-            this.btnSync.Size = new System.Drawing.Size(75, 23);
-            this.btnSync.TabIndex = 0;
-            this.btnSync.Text = "异步";
-            this.btnSync.UseVisualStyleBackColor = true;
-            this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
+            this.btnOpenFile.Location = new System.Drawing.Point(616, 61);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(111, 27);
+            this.btnOpenFile.TabIndex = 0;
+            this.btnOpenFile.Text = "打开文件";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // txtFileName
+            // 
+            this.txtFileName.Location = new System.Drawing.Point(83, 61);
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.Size = new System.Drawing.Size(303, 25);
+            this.txtFileName.TabIndex = 1;
+            // 
+            // cbBoxType
+            // 
+            this.cbBoxType.FormattingEnabled = true;
+            this.cbBoxType.Items.AddRange(new object[] {
+            "url",
+            "base64"});
+            this.cbBoxType.Location = new System.Drawing.Point(423, 62);
+            this.cbBoxType.Name = "cbBoxType";
+            this.cbBoxType.Size = new System.Drawing.Size(121, 23);
+            this.cbBoxType.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnSync);
+            this.Controls.Add(this.cbBoxType);
+            this.Controls.Add(this.txtFileName);
+            this.Controls.Add(this.btnOpenFile);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnSync;
+        private System.Windows.Forms.Button btnOpenFile;
+        private System.Windows.Forms.TextBox txtFileName;
+        private System.Windows.Forms.ComboBox cbBoxType;
     }
 }
 
