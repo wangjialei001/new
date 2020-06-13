@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Hangfire" Version="1.7.6" />
+    <PackageReference Include="Hangfire.MySql.Core" Version="2.2.1" />
     <PackageReference Include="Infrastructure.Logger" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="2.2.0" />

@@ -1,4 +1,6 @@
 ﻿using Hangfire;
+using Hangfire.MySql;
+using Hangfire.MySql.Core;
 using Hangfire.SqlServer;
 using Infrastructure.SyncData;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Data;
 using Web.Tasks.MessageTask;
 
 namespace Web.Tasks
@@ -25,19 +28,34 @@ namespace Web.Tasks
         {
             services.AddSyncData(Configuration);
             // Add Hangfire services.
-            services.AddHangfire(configuration => configuration
-                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-                .UseSimpleAssemblyNameTypeSerializer()
-                .UseRecommendedSerializerSettings()
-                .UseSqlServerStorage(Configuration.GetConnectionString("HangfireConnection"), new SqlServerStorageOptions
-                {
-                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                    QueuePollInterval = TimeSpan.Zero,
-                    UseRecommendedIsolationLevel = true,
-                    UsePageLocksOnDequeue = true,
-                    DisableGlobalLocks = true
-                }));
+            //services.AddHangfire(configuration => configuration
+            //    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+            //    .UseSimpleAssemblyNameTypeSerializer()
+            //    .UseRecommendedSerializerSettings()
+            //    .UseSqlServerStorage(Configuration.GetConnectionString("HangfireConnection"), new SqlServerStorageOptions
+            //    {
+            //        CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+            //        SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+            //        QueuePollInterval = TimeSpan.Zero,
+            //        UseRecommendedIsolationLevel = true,
+            //        UsePageLocksOnDequeue = true,
+            //        DisableGlobalLocks = true
+            //    }));
+            string hangfireMysqlConnStr = Configuration.GetConnectionString("HangfireMySqlConnection");
+            services.AddHangfire(configuration => configuration.UseStorage(
+                new MySqlStorage(
+                    hangfireMysqlConnStr,
+                    new MySqlStorageOptions
+                    {
+                        TransactionIsolationLevel = IsolationLevel.ReadCommitted, // 事务隔离级别。默认是读取已提交。
+                        QueuePollInterval = TimeSpan.FromSeconds(15),             //- 作业队列轮询间隔。默认值为15秒。
+                        JobExpirationCheckInterval = TimeSpan.FromHours(1),       //- 作业到期检查间隔（管理过期记录）。默认值为1小时。
+                        CountersAggregateInterval = TimeSpan.FromMinutes(5),      //- 聚合计数器的间隔。默认为5分钟。
+                        PrepareSchemaIfNecessary = true,                          //- 如果设置为true，则创建数据库表。默认是true。
+                        DashboardJobListLimit = 50000,                            //- 仪表板作业列表限制。默认值为50000。
+                        TransactionTimeout = TimeSpan.FromMinutes(1),             //- 交易超时。默认为1分钟。
+                        TablePrefix = "Hangfire"                                  //- 数据库中表的前缀。默认为none
+                    })));
             // Add the processing server as IHostedService
             services.AddHangfireServer();
             services.AddTransient<IMessageSerivce, MessageSerivce>();//注册
@@ -53,7 +71,7 @@ namespace Web.Tasks
             {
                 app.UseDeveloperExceptionPage();
             }
-            RecurringJob.AddOrUpdate(() => Console.WriteLine("start hangfire"), Cron.Daily());
+            RecurringJob.AddOrUpdate(() => Console.WriteLine($"start hangfire {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff")}"), "0/10 * * * * ? ");
             RecurringJob.AddOrUpdate<IMessageSerivce>(a => a.SendMessage("hello"), "0 0/5 * * * ?");//使用
             RecurringJob.AddOrUpdate<IMessageSerivce>(a => a.ReceiveMessage("hello"), "0 0/5 * * * ?");//使用
             app.UseMvc();

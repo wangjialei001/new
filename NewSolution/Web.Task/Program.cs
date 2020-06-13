@@ -27,10 +27,12 @@ namespace Web.Tasks
                 // To run the app without the CustomWebHostService change the
                 // next line to host.RunAsService();
                 //host.RunAsCustomService();
+                Console.WriteLine("RunAsService");
                 host.RunAsService();
             }
             else
             {
+                Console.WriteLine("Run");
                 host.Run();
             }
             //CreateWebHostBuilder(args).Build().Run();

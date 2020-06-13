@@ -9,5 +9,6 @@ namespace Web.Tasks.MessageTask
     {
         void SendMessage(string msg);
         void ReceiveMessage(string msg);
+        void SendEmail(long userId,DateTime startTime);
     }
 }

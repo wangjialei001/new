@@ -9,10 +9,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using New.Core;
 using New.Model.Binder;
 using New.Service;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -31,6 +33,9 @@ namespace Internel.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITransientService, TransientService>();
+            services.AddTransient<IScopeService, ScopeService>();
+            services.AddSingleton<ISingletonService, SingletonService>();
             services.AddTransient<CusExceptionFilter>();//注入到容器中
             services.AddHostedService<TaskBackgroundService>();
             services.AddSyncData(Configuration);
@@ -41,6 +46,17 @@ namespace Internel.Api
                 var basePath = AppDomain.CurrentDomain.BaseDirectory;
                 var xmlPath = Path.Combine(basePath, "Internel.Api.xml");
                 c.IncludeXmlComments(xmlPath);
+                #region token
+                var security = new Dictionary<string, IEnumerable<string>> { { "Blog.Core", new string[] { } }, };
+                c.AddSecurityRequirement(security);
+                c.AddSecurityDefinition("Blog.Core", new ApiKeyScheme
+                {
+                    Description = "JWT授权(数据将在请求头中进行传输) 直接在下框中输入Bearer {token}（注意两者之间是一个空格）\"",
+                    Name = "Authorization", // jwt默认的参数名称
+                    In = "header", // jwt默认存放Authorization信息的位置(请求头中)
+                    Type = "apiKey"
+                });
+                #endregion
                 //swagger中控制请求的时候发是否需要在url中增加accesstoken
                 c.OperationFilter<HttpHeaderOperation>();
             });

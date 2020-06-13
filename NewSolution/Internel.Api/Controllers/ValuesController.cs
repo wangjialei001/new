@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Internel.Api.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using New.Core;
 using Newtonsoft.Json.Linq;
 
 namespace Internel.Api.Controllers
@@ -22,11 +23,26 @@ namespace Internel.Api.Controllers
     //[TypeFilter(typeof(CusExceptionFilter))))]//不需要再容器中注入
     public class ValuesController : ControllerBase
     {
+        private readonly IScopeService scopeService;
+        private readonly ITransientService transientService;
+        public ValuesController(IScopeService _scopeService, ITransientService _transientService)
+        {
+            transientService = _transientService;
+            scopeService = _scopeService;
+        }
         // GET api/values
         [HttpGet]
         //[ResultFilter]
-        public ActionResult<IEnumerable<string>> Get()
+        public async Task<ActionResult<IEnumerable<string>>> Get()
         {
+            Console.WriteLine($"testService哈希code是:{transientService.GetHashCode()}");
+            await scopeService.SayHello(transientService);
+            //Task.Run(()=> {
+            //    Console.WriteLine($"testService:{testService.GetHashCode()}");
+            //    testService.SayHello();
+            //});
+            //Console.WriteLine($"singletonService哈希code是:{singletonService.GetHashCode()}");
+            //singletonService.SayHello();
             Console.WriteLine("get无参数请求");
             return new string[] { "value1", "value2" };
         }
