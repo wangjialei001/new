@@ -11,7 +11,7 @@ using WorkflowItems.EdcStep;
 namespace MyWorkflow.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class ValuesController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -36,6 +36,12 @@ namespace MyWorkflow.Controllers
         public async Task<string> Get(int id)
         {
             await _workflowService.StartWorkflow("EdcWorkflow", new EdcData { Id = id });
+            return "";
+        }
+        [HttpGet]
+        public async Task<string> GetApproval(string messsage)
+        {
+            await _workflowService.StartWorkflow("Approval");
             return "";
         }
     }

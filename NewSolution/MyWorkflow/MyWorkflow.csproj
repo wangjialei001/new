@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="WorkflowCore" Version="3.1.5" />
+    <PackageReference Include="WorkflowCore.DSL" Version="3.1.5" />
   </ItemGroup>
 
   <ItemGroup>
