@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.2.0" />
     <PackageReference Include="WorkflowCore" Version="3.1.5" />
+    <PackageReference Include="WorkflowCore.DSL" Version="3.1.5" />
     <PackageReference Include="WorkflowCore.Persistence.MySql" Version="3.0.1" />
   </ItemGroup>
 

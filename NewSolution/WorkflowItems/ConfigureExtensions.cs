@@ -1,17 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WorkflowCore.Interface;
 using WorkflowCore.Services.DefinitionStorage;
-using WorkflowItems;
 using WorkflowItems.EdcStep;
 
-namespace MyWorkflow
+namespace WorkflowItems
 {
     public static class ConfigureExtensions
     {
@@ -23,8 +18,9 @@ namespace MyWorkflow
             workflowHost.Start();
             //workflowHost.StartWorkflow("HelloWorld");
 
-
-            var appLifetime = app.ApplicationServices.GetService(typeof(IHostApplicationLifetime)) as IHostApplicationLifetime;
+            
+            //var appLifetime = app.ApplicationServices.GetService(typeof(IHostApplicationLifetime)) as IHostApplicationLifetime;
+            var appLifetime = app.ApplicationServices.GetService(typeof(IApplicationLifetime)) as IApplicationLifetime;
             appLifetime.ApplicationStopping.Register(() =>
             {
                 workflowHost.Stop();
