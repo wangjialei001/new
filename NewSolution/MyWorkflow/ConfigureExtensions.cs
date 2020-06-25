@@ -29,7 +29,7 @@ namespace MyWorkflow
             {
                 workflowHost.Stop();
             });
-            
+
             var loader = app.ApplicationServices.GetService(typeof(IDefinitionLoader)) as IDefinitionLoader;
             var config1 = new WorkflowConfig
             {
@@ -47,7 +47,9 @@ namespace MyWorkflow
                     }
                 }
             };
-            loader.LoadDefinition(JsonConvert.SerializeObject(config1), Deserializers.Json);
+            var setting = new JsonSerializerSettings { };
+            setting.NullValueHandling = NullValueHandling.Ignore;
+            loader.LoadDefinition(JsonConvert.SerializeObject(config1, setting), Deserializers.Json);
             return app;
         }
     }
