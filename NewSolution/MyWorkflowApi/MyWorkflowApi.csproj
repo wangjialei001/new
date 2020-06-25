@@ -14,4 +14,10 @@
     <ProjectReference Include="..\WorkflowItems\WorkflowItems.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="WorkflowCore">
+      <HintPath>..\WorkflowItems\WorkflowBLL\WorkflowCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

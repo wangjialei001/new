@@ -28,15 +28,15 @@ namespace MyWorkflow
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddWorkflowDSL();
-            services.AddTransient<PrintMessage>();
-            services.AddTransient<ActiveWorld>();
-            services.AddTransient<GoodByeWorld>();
-            services.AddTransient<HelloWorld>();
-            services.AddTransient<StartScheduleStep>();
-            services.AddWorkflow(x => {
-                x.UseMySQL(@"Server=127.0.0.1;Database=workflow;User=root;Password=123456;", true, true);
-            });
+            //services.AddWorkflowDSL();
+            //services.AddTransient<PrintMessage>();
+            //services.AddTransient<ActiveWorld>();
+            //services.AddTransient<GoodByeWorld>();
+            //services.AddTransient<HelloWorld>();
+            //services.AddTransient<StartScheduleStep>();
+            //services.AddWorkflow(x => {
+            //    x.UseMySQL(@"Server=127.0.0.1;Database=workflow;User=root;Password=123456;", true, true);
+            //});
             //services.AddWorkflow();
             services.AddLogging();
             services.AddControllers();
@@ -54,7 +54,7 @@ namespace MyWorkflow
 
             app.UseAuthorization();
             
-            app.UseWorkflow();
+            //app.UseWorkflow();
 
             app.UseEndpoints(endpoints =>
             {
