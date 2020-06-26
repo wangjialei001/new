@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MyWorkflow.Entity;
 using WorkflowCore.Interface;
+using WorkflowItems;
 using WorkflowItems.EdcStep;
 
 namespace MyWorkflowApi.Controllers
@@ -55,10 +57,49 @@ namespace MyWorkflowApi.Controllers
             return "";
         }
         [HttpGet]
-        public async Task<string> GetApproval(string messsage)
+        public async Task<string> GetApproval(string messsage,int id)
         {
-            await _workflowService.StartWorkflow("Approval");
+            await _workflowService.StartWorkflow("Approval", new ApprovalMessage { Message = "Gooney发起申请", State = 0 ,UserId=1,Id=id});
+            //await _workflowService.StartWorkflow("Approval", "Gooney发起申请");
             return "";
         }
+        [HttpPost]
+        public async Task<string> UserStartApproval()
+        {
+            var msg=TestData.ApprovalInfos.FirstOrDefault();
+            await _workflowService.StartWorkflow("Approval", new ApprovalMessage { Message = msg.Message, UserId = msg.UserId, Id = msg.Id });
+            
+            return TestData.Users.FirstOrDefault(t => t.Id == msg.UserId).Name + ":发起申请：" + msg.Message;
+        }
+        [HttpPost]
+        public async Task<string> UserApprovaled(UserApprovaled input)
+        {
+            var aprovalFlow = TestData.ApprovalFlowInfos.FirstOrDefault(t => t.UserId == input.UserId && t.State == 0 && t.ApprovalId == input.ApprovalId);
+            var aprovalInfo=TestData.ApprovalInfos.FirstOrDefault(t => t.State == 0 && t.CurrentOrder == aprovalFlow.Order && t.Id== aprovalFlow.ApprovalId);
+
+            await _workflowService.StartWorkflow("Approval", new ApprovalMessage
+            {
+                Message = aprovalInfo.Message,
+                UserId = aprovalInfo.UserId,
+                Id = aprovalInfo.Id,
+                ApprovalFlow = new ApprovalFlow
+                {
+                    UserId = input.UserId,
+                    Reason = input.Remark,
+                    State = input.State
+                }
+            });
+            aprovalFlow.State = input.State;
+            aprovalFlow.Remark = input.Remark;
+            aprovalInfo.CurrentOrder = aprovalInfo.CurrentOrder + 1;
+            return TestData.Users.FirstOrDefault(t => t.Id == input.UserId).Name + ":已经审批：" + aprovalInfo.Message + input.State + ";备注：" + input.Remark;
+        }
+    }
+    public class UserApprovaled
+    {
+        public int UserId { get; set; }
+        public int State { get; set; }
+        public string Remark { get; set; }
+        public int ApprovalId { get; set; }
     }
 }

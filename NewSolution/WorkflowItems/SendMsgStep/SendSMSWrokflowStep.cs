@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using WorkflowCore.Interface;
 using WorkflowCore.Models;
+using WorkflowItems.SendMsgStep;
 
 namespace WorkflowItems
 {
-    public class ApprovalWrokflow : StepBody
+    public class SendSMSWrokflowStep : StepBody
     {
-        public ApprovalMessage approvalMessage;
+        public SendSMS msg;
+
         public override ExecutionResult Run(IStepExecutionContext context)
         {
-            Console.WriteLine("执行ApprovalWrokflow");
-            if (approvalMessage != null)
-                Console.WriteLine(approvalMessage);
+            Console.WriteLine(msg);
             return ExecutionResult.Next();
         }
     }

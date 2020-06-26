@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WorkflowCore.Persistence.EntityFramework\WorkflowCore.Persistence.EntityFramework.csproj" />
-    <ProjectReference Include="..\WorkflowCore\WorkflowCore.csproj" />
   </ItemGroup>
 
 </Project>

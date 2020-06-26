@@ -27,14 +27,8 @@ namespace MyWorkflowApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //services.AddWorkflowDSL();
-            services.AddTransient<PrintMessage>();
-            services.AddTransient<ActiveWorld>();
-            services.AddTransient<GoodByeWorld>();
-            services.AddTransient<HelloWorld>();
-            services.AddTransient<StartScheduleStep>();
-            services.AddWorkflow(x => {
-                x.UseMySQL(@"Server=127.0.0.1;Database=workflow;User=root;Password=123456;", true, true);
+            services.AddWorkflowItem(new AddWorkflowItem {
+                MySqlConnectionStr = @"Server=127.0.0.1;Database=workflow;User=root;Password=123456;"
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
