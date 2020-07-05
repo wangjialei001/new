@@ -342,6 +342,118 @@ namespace ConsoleApp5
                     efectphyvalue1=18f,
                     //phytype="p",
                     phyvalue=20.62f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=19f,
+                    //phytype="p",
+                    phyvalue=21.96f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=20f,
+                    //phytype="p",
+                    phyvalue=23.37f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=21f,
+                    //phytype="p",
+                    phyvalue=24.85f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=22f,
+                    //phytype="p",
+                    phyvalue=26.42f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=23f,
+                    //phytype="p",
+                    phyvalue=28.08f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=24f,
+                    //phytype="p",
+                    phyvalue=29.82f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=24f,
+                    //phytype="p",
+                    phyvalue=29.82f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=25f,
+                    //phytype="p",
+                    phyvalue=31.67f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=26f,
+                    //phytype="p",
+                    phyvalue=33.60f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=27f,
+                    //phytype="p",
+                    phyvalue=35.64f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=28f,
+                    //phytype="p",
+                    phyvalue=37.78f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=29f,
+                    //phytype="p",
+                    phyvalue=40.04f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=30f,
+                    //phytype="p",
+                    phyvalue=42.41f
+                },
+                new PhyParamMatch1{
+                    efectphytype="Pa",
+                    efectphyvalue=0.1f,
+                    efectphytype1="C",
+                    efectphyvalue1=31f,
+                    //phytype="p",
+                    phyvalue=44.91f
                 }
             };
             #endregion
@@ -476,7 +588,7 @@ namespace ConsoleApp5
                 efectphytype = "Pa",
                 efectphyvalue = 0.1f,
                 efectphytype1 = "C",
-                efectphyvalue1 = -6.63f
+                efectphyvalue1 = 6.63f
             };
             var result1 = ml1.Prediction(model1.Item1, predictionData);
 
