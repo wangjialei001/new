@@ -4,19 +4,34 @@ using System.Text;
 using Microsoft.ML.Data;
 namespace ConsoleApp5
 {
+    [Serializable]
     public class PhyParamMatch1
+    {//只有从文件加载数据时才需要 LoadColumn
+        //[LoadColumn(0)]
+        public string efectphytype { get; set; }
+       // [LoadColumn(1)]
+        public float efectphyvalue { get; set; }
+
+        //[LoadColumn(2)]
+        public string efectphytype1 { get; set; }
+        //[LoadColumn(3)]
+        public float efectphyvalue1 { get; set; }
+        //[LoadColumn(4)]
+        public float phyvalue { get; set; }
+    }
+    public class PhyParamMatch2
     {
         [LoadColumn(0)]
-        public string efectphytype;
+        public string efectphytype { get; set; }
         [LoadColumn(1)]
-        public float efectphyvalue=0;
+        public float efectphyvalue { get; set; }
 
         [LoadColumn(2)]
-        public string efectphytype1;
+        public string efectphytype1 { get; set; }
         [LoadColumn(3)]
-        public float efectphyvalue1;
+        public float efectphyvalue1 { get; set; }
         [LoadColumn(4)]
-        public float phyvalue;
+        public float phyvalue { get; set; }
     }
     public class PhyParamMatch
     {

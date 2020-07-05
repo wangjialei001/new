@@ -11,477 +11,479 @@ namespace ConsoleApp5
         static readonly string _testDataPath = Path.Combine(Environment.CurrentDirectory, "Data", "taxi-fare-test.csv");
         static void Main(string[] args)
         {
-            var ml = new MLRegression();
+            var ml1 = new MLRegression();
+            var ml2 = new MLRegression();
             #region data
-            var data = new List<PhyParamMatch> {
-                new PhyParamMatch{
+            var data = new List<PhyParamMatch1> {
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-20F,
+                    efectphyvalue1=-20f,
                     //phytype="p",
-                    phyvalue=1.03F
+                    phyvalue=1.03f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-19F,
+                    efectphyvalue1=-19f,
                     //phytype="p",
-                    phyvalue=1.13F
+                    phyvalue=1.13f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-18F,
+                    efectphyvalue1=-18f,
                     //phytype="p",
-                    phyvalue=1.25F
+                    phyvalue=1.25f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-17F,
+                    efectphyvalue1=-17f,
                     //phytype="p",
-                    phyvalue=1.37F
+                    phyvalue=1.37f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-16F,
+                    efectphyvalue1=-16f,
                     //phytype="p",
-                    phyvalue=1.50F
+                    phyvalue=1.50f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-15F,
+                    efectphyvalue1=-15f,
                     //phytype="p",
-                    phyvalue=1.65F
+                    phyvalue=1.65f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-14F,
+                    efectphyvalue1=-14f,
                     //phytype="p",
-                    phyvalue=1.81F
+                    phyvalue=1.81f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-13F,
+                    efectphyvalue1=-13f,
                     //phytype="p",
-                    phyvalue=1.98F
+                    phyvalue=1.98f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-12F,
+                    efectphyvalue1=-12f,
                     //phytype="p",
-                    phyvalue=2.17F
+                    phyvalue=2.17f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-11F,
+                    efectphyvalue1=-11f,
                     //phytype="p",
-                    phyvalue=2.37F
+                    phyvalue=2.37f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-10F,
+                    efectphyvalue1=-10f,
                     //phytype="p",
-                    phyvalue=2.59F
+                    phyvalue=2.59f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-9F,
+                    efectphyvalue1=-9f,
                     //phytype="p",
-                    phyvalue=2.83F
+                    phyvalue=2.83f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-8F,
+                    efectphyvalue1=-8f,
                     //phytype="p",
-                    phyvalue=3.09F
+                    phyvalue=3.09f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-7F,
+                    efectphyvalue1=-7f,
                     //phytype="p",
-                    phyvalue=3.38F
+                    phyvalue=3.38f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-6F,
+                    efectphyvalue1=-6f,
                     //phytype="p",
-                    phyvalue=3.68F
+                    phyvalue=3.68f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-5F,
+                    efectphyvalue1=-5f,
                     //phytype="p",
-                    phyvalue=4.01F
+                    phyvalue=4.01f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-4F,
+                    efectphyvalue1=-4f,
                     //phytype="p",
-                    phyvalue=4.37F
+                    phyvalue=4.37f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-3F,
+                    efectphyvalue1=-3f,
                     //phytype="p",
-                    phyvalue=4.75F
+                    phyvalue=4.75f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-2F,
+                    efectphyvalue1=-2f,
                     //phytype="p",
-                    phyvalue=5.17F
+                    phyvalue=5.17f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=-1F,
+                    efectphyvalue1=-1f,
                     //phytype="p",
-                    phyvalue=5.62F
+                    phyvalue=5.62f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=0F,
+                    efectphyvalue1=0f,
                     //phytype="p",
-                    phyvalue=6.11F
+                    phyvalue=6.11f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=1F,
+                    efectphyvalue1=1f,
                     //phytype="p",
-                    phyvalue=6.56F
+                    phyvalue=6.56f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=2F,
+                    efectphyvalue1=2f,
                     //phytype="p",
-                    phyvalue=7.05F
+                    phyvalue=7.05f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=3F,
+                    efectphyvalue1=3f,
                     //phytype="p",
-                    phyvalue=7.57F
+                    phyvalue=7.57f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=4F,
+                    efectphyvalue1=4f,
                     //phytype="p",
-                    phyvalue=8.13F
+                    phyvalue=8.13f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=5F,
+                    efectphyvalue1=5f,
                     //phytype="p",
-                    phyvalue=8.72F
+                    phyvalue=8.72f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=4F,
+                    efectphyvalue1=4f,
                     //phytype="p",
-                    phyvalue=8.13F
+                    phyvalue=8.13f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=5F,
+                    efectphyvalue1=5f,
                     //phytype="p",
-                    phyvalue=8.72F
+                    phyvalue=8.72f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=6F,
+                    efectphyvalue1=6f,
                     //phytype="p",
-                    phyvalue=9.38F
+                    phyvalue=9.38f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=7F,
+                    efectphyvalue1=7f,
                     //phytype="p",
-                    phyvalue=10.01F
+                    phyvalue=10.01f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=8F,
+                    efectphyvalue1=8f,
                     //phytype="p",
-                    phyvalue=10.72F
+                    phyvalue=10.72f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=9F,
+                    efectphyvalue1=9f,
                     //phytype="p",
-                    phyvalue=11.47F
+                    phyvalue=11.47f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=10F,
+                    efectphyvalue1=10f,
                     //phytype="p",
-                    phyvalue=12.27F
+                    phyvalue=12.27f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=11F,
+                    efectphyvalue1=11f,
                     //phytype="p",
-                    phyvalue=13.12F
+                    phyvalue=13.12f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=12F,
+                    efectphyvalue1=12f,
                     //phytype="p",
-                    phyvalue=14.01F
+                    phyvalue=14.01f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=13F,
+                    efectphyvalue1=13f,
                     //phytype="p",
-                    phyvalue=15.03F
+                    phyvalue=15.03f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=14F,
+                    efectphyvalue1=14f,
                     //phytype="p",
-                    phyvalue=15.97F
+                    phyvalue=15.97f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=15F,
+                    efectphyvalue1=15f,
                     //phytype="p",
-                    phyvalue=17.04F
+                    phyvalue=17.04f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=16F,
+                    efectphyvalue1=16f,
                     //phytype="p",
-                    phyvalue=18.17F
+                    phyvalue=18.17f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=17F,
+                    efectphyvalue1=17f,
                     //phytype="p",
-                    phyvalue=19.36F
+                    phyvalue=19.36f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=18F,
+                    efectphyvalue1=18f,
                     //phytype="p",
-                    phyvalue=20.62F
+                    phyvalue=20.62f
                 }
             };
             #endregion
-            var model1 = ml.Train(data);
-            var model2 = ml.Train(_trainDataPath);
-            var evaluateData = new List<PhyParamMatch> {
-                new PhyParamMatch{
+            var model1 = ml1.Train(data);
+            //var model2 = ml2.Train(_trainDataPath);
+            var evaluateData = new List<PhyParamMatch1> {
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=4F,
+                    efectphyvalue1=4f,
                     //phytype="p",
-                    phyvalue=8.13F
+                    phyvalue=8.13f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=5F,
+                    efectphyvalue1=5f,
                     //phytype="p",
-                    phyvalue=8.72F
+                    phyvalue=8.72f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=6F,
+                    efectphyvalue1=6f,
                     //phytype="p",
-                    phyvalue=9.38F
+                    phyvalue=9.38f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=7F,
+                    efectphyvalue1=7,
                     //phytype="p",
-                    phyvalue=10.01F
+                    phyvalue=10.01f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=8F,
+                    efectphyvalue1=8f,
                     //phytype="p",
-                    phyvalue=10.72F
+                    phyvalue=10.72f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=9F,
+                    efectphyvalue1=9,
                     //phytype="p",
-                    phyvalue=11.47F
+                    phyvalue=11.47f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=10F,
+                    efectphyvalue1=10,
                     //phytype="p",
-                    phyvalue=12.27F
+                    phyvalue=12.27f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=11F,
+                    efectphyvalue1=11,
                     //phytype="p",
-                    phyvalue=13.12F
+                    phyvalue=13.12f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=12F,
+                    efectphyvalue1=12f,
                     //phytype="p",
-                    phyvalue=14.01F
+                    phyvalue=14.01f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=13F,
+                    efectphyvalue1=13f,
                     //phytype="p",
-                    phyvalue=15.03F
+                    phyvalue=15.03f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=14F,
+                    efectphyvalue1=14f,
                     //phytype="p",
-                    phyvalue=15.97F
+                    phyvalue=15.97f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=15F,
+                    efectphyvalue1=15f,
                     //phytype="p",
-                    phyvalue=17.04F
+                    phyvalue=17.04f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=16F,
+                    efectphyvalue1=16f,
                     //phytype="p",
-                    phyvalue=18.17F
+                    phyvalue=18.17f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=17F,
+                    efectphyvalue1=17f,
                     //phytype="p",
-                    phyvalue=19.36F
+                    phyvalue=19.36f
                 },
-                new PhyParamMatch{
+                new PhyParamMatch1{
                     efectphytype="Pa",
-                    efectphyvalue=0.1F,
+                    efectphyvalue=0.1f,
                     efectphytype1="C",
-                    efectphyvalue1=18F,
+                    efectphyvalue1=18f,
                     //phytype="p",
-                    phyvalue=20.62F
+                    phyvalue=20.62f
                 }
             };
-            ml.Evaluate(model1, evaluateData);
-            ml.Evaluate(model2, _testDataPath);
-            var predictionData = new PhyParamMatch
+            ml1.Evaluate(model1.Item1, evaluateData);
+            //ml2.Evaluate(model2.Item1, _testDataPath);
+            var predictionData = new PhyParamMatch1
             {
                 efectphytype = "Pa",
-                efectphyvalue = 0.1F,
+                efectphyvalue = 0.1f,
                 efectphytype1 = "C",
-                efectphyvalue1 = -8F
+                efectphyvalue1 = -6.63f
             };
-            var result1 = ml.Prediction(model1, predictionData);
-            var result2 = ml.Prediction(model2, predictionData);
+            var result1 = ml1.Prediction(model1.Item1, predictionData);
+
+            //var result2 = ml2.Prediction(model2.Item1, predictionData);
             Console.WriteLine(JsonConvert.SerializeObject(result1));
-            Console.WriteLine(JsonConvert.SerializeObject(result2));
-            
+            //Console.WriteLine(JsonConvert.SerializeObject(result2));
+
             Console.ReadKey();
         }
     }
