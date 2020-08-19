@@ -43,6 +43,18 @@ namespace AuthService.WebApi
                 // resource owner password grant client
                 new Client
                 {
+                    ClientId = "AuthTestApi3",
+                    AllowedGrantTypes = GrantTypes.Code,
+
+                    ClientSecrets =
+                    {
+                        new Secret("AuthTestApi3".Sha256())
+                    },
+                    AllowedScopes = { "api",IdentityServerConstants.StandardScopes.OpenId, //必须要添加，否则报forbidden错误
+                  IdentityServerConstants.StandardScopes.Profile }
+                },
+                 new Client
+                {
                     ClientId = "client2",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
 

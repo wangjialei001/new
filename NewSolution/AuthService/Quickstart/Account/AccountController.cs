@@ -41,8 +41,8 @@ namespace IdentityServerHost.Quickstart.UI
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
-            TestUserStore users = null,
-            db_testContext db_TestContext)
+            db_testContext db_TestContext,
+            TestUserStore users = null)
         {
             // if the TestUserStore is not in DI, then we'll just use the global users collection
             // this is where you would plug in your own custom identity management library (e.g. ASP.NET Identity)
@@ -119,7 +119,7 @@ namespace IdentityServerHost.Quickstart.UI
                 if (userInfo != null && string.Equals(model.Password, userInfo.Pwd))
                 {
                     //var user = _users.FindByUsername(model.Username);
-                    var user = new { Username = "admin", SubjectId = "1" };
+                    var user = new { Username = userInfo.Name, SubjectId = userInfo.Id.ToString() };
                     await _events.RaiseAsync(new UserLoginSuccessEvent(user.Username, user.SubjectId, user.Username, clientId: context?.Client.ClientId));
 
                     // only set explicit expiration here if user chooses "remember me". 

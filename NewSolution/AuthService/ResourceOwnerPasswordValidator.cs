@@ -31,7 +31,7 @@ namespace AuthService
                 context.Result = new GrantValidationResult(
                  subject: context.UserName,
                  authenticationMethod: "custom",
-                 claims: GetUserClaims());
+                 claims: Config.GetClaim(userInfo));
             }
             else
             {

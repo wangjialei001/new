@@ -51,6 +51,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{BF647C6D
 	ProjectSection(SolutionItems) = preProject
 		Views\index.html = Views\index.html
 		Views\index2.html = Views\index2.html
+		Views\index3.html = Views\index3.html
+		Views\index4.html = Views\index4.html
 		Views\jquery-3.4.1.min.js = Views\jquery-3.4.1.min.js
 	EndProjectSection
 EndProject
@@ -90,7 +92,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthTestApi", "AuthTestApi\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthEFService", "AuthEFService\AuthEFService.csproj", "{7C2CFED4-777F-4ED7-9C81-11C1761F5391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{DE01C7E9-2106-4CE3-B25D-A77FBC502ABE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{DE01C7E9-2106-4CE3-B25D-A77FBC502ABE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

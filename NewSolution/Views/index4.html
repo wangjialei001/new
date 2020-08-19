@@ -1,1 +1,33 @@
-success
+<html>
+<head>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+       
+        $.ajax({
+            url: "http://localhost:5000/api/values",
+            dataType: "json",
+            success: function (data, status) {
+                console.log("Data: " + data + "\nStatus: " + status);
+            },
+            beforeSend: function (xhr) {
+                xhr.withCredentials = true
+            },
+            error: function (error) {
+                if (error.status == 401) {
+                    //window.location.href = "http://localhost:5001/Account/Login?ReturnUrl=http://localhost/view/"
+                    window.location.href = "http://localhost:5001/connect/authorize?client_id=AuthTestApi3&redirect_uri=http://localhost/view&response_type=code&scope=api1";
+                    //window.location.href = "http://localhost:5001/connect/authorize?client_id=AuthTestApi3&response_type=code&scope=api1";
+                    //window.location.href = "http://localhost:5001/connect/authorize?client_id=AuthTestApi3&redirect_uri=http://localhost&response_type=code&scope=api1";
+                }
+            }
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <p>If you click on me, I will disappear.</p>
+</body>
+
+</html> 

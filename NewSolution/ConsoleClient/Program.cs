@@ -9,12 +9,13 @@ namespace ConsoleClient
     {
         static void Main(string[] args)
         {
+            GetToken();
             Console.WriteLine("Hello World!");
         }
-        private void GetToken()
+        private static void GetToken()
         {
             var client = new HttpClient();
-            var disco = client.GetDiscoveryDocumentAsync("http://localhost:5000").Result;
+            var disco = client.GetDiscoveryDocumentAsync("http://localhost:5001").Result;
             if (disco.IsError)
             {
                 Console.WriteLine(disco.Error);
@@ -25,10 +26,9 @@ namespace ConsoleClient
             var tokenResponse = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
             {
                 Address = disco.TokenEndpoint,
-
-                ClientId = "client",
-                ClientSecret = "secret",
-                //Scope = "api1"
+                ClientId = "AuthTestApi1",
+                ClientSecret = "AuthTestApi1",
+                Scope = "api1"
             }).Result;
 
             if (tokenResponse.IsError)
@@ -44,7 +44,7 @@ namespace ConsoleClient
             var client2 = new HttpClient();
             client2.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = client2.GetAsync("http://localhost:5001/api/Values").Result;
+            var response = client2.GetAsync("http://localhost:5000/api/Values").Result;
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);
