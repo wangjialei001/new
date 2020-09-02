@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace AuthTestApi
+namespace WebApplication1
 {
     public class Program
     {
@@ -19,6 +19,6 @@ namespace AuthTestApi
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>().UseUrls("http://*:5000");
+                .UseStartup<Startup>();
     }
 }
