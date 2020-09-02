@@ -176,7 +176,8 @@ namespace New.Common.Util
         /// <returns></returns>
         private long timeGen()
         {
-            return (long)(DateTime.UtcNow.AddMinutes(-1) - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
+            //return (long)(DateTime.UtcNow.AddMinutes(1) - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
+            return (long)(DateTime.Parse("2020-09-02 21:07:00").AddMinutes(-5) - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
         }
     }
 }
