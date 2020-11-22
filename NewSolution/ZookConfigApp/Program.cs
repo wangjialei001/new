@@ -13,6 +13,12 @@ namespace ZookConfigApp
         public const int timeout = 5000;
         static async Task Main(string[] args)
         {
+            ConfigHelper configHelper = new ConfigHelper("msg2");
+            var value = configHelper.GetNode<string>("msg2");
+            Console.ReadKey();
+        }
+        static async Task Main1(string[] args)
+        {
             var conf = new ZookeeperClient("192.168.1.4:2181,192.168.1.4:2182,192.168.1.4:2183", timeout);
             try
             {

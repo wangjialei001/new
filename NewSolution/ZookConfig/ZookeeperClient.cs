@@ -69,33 +69,40 @@ namespace ZookConfig
 
             public override async Task process(WatchedEvent @event)
             {
-                Console.WriteLine($"Zookeeper链接成功:{@event.getState() == KeeperState.SyncConnected}");
-
-                if (@event.get_Type() == EventType.NodeDataChanged)
-                {//Node值修改通知
-                    var data = await _cs.ReadConfigDataAsync();
-
-                    Console.WriteLine("{0}收到修改此节点【{1}】值的通知，其值已被改为【{2}】。", Environment.NewLine, _cs.QueryPath, data);
-                }
-                else if (@event.get_Type() == EventType.NodeCreated)
-                {//Node创建通知
-                    var data = await _cs.ReadConfigDataAsync();
-                    Console.WriteLine($"{Environment.NewLine}收到新创建的节点【{_cs.QueryPath}】，值【{data}】");
-                }
-                else if (@event.get_Type() == EventType.NodeDeleted)
-                {//Node删除通知
-                    var data = await _cs.ReadConfigDataAsync();
-                    Console.WriteLine($"{Environment.NewLine}收到{_cs.QueryPath}删除节点通知，值【{data}】");
-                }
-                else if (@event.get_Type() == EventType.NodeChildrenChanged)
-                {//子节点修改通知
-                    var data = await _cs.ReadConfigDataAsync();
-                    Console.WriteLine($"{Environment.NewLine}收到子节点{_cs.QueryPath}修改通知，值【{data}】");
-                }
-                else
+                try
                 {
-                    var data = await _cs.ReadConfigDataAsync();
-                    Console.WriteLine($"{Environment.NewLine}收到其他通知{_cs.QueryPath}通知，值【{data}】");
+                    Console.WriteLine($"Zookeeper链接成功:{@event.getState() == KeeperState.SyncConnected}");
+
+                    if (@event.get_Type() == EventType.NodeDataChanged)
+                    {//Node值修改通知
+                        var data = await _cs.ReadConfigDataAsync();
+
+                        Console.WriteLine("{0}收到修改此节点【{1}】值的通知，其值已被改为【{2}】。", Environment.NewLine, _cs.QueryPath, data);
+                    }
+                    else if (@event.get_Type() == EventType.NodeCreated)
+                    {//Node创建通知
+                        var data = await _cs.ReadConfigDataAsync();
+                        Console.WriteLine($"{Environment.NewLine}收到新创建的节点【{_cs.QueryPath}】，值【{data}】");
+                    }
+                    else if (@event.get_Type() == EventType.NodeDeleted)
+                    {//Node删除通知
+                        var data = await _cs.ReadConfigDataAsync();
+                        Console.WriteLine($"{Environment.NewLine}收到{_cs.QueryPath}删除节点通知，值【{data}】");
+                    }
+                    else if (@event.get_Type() == EventType.NodeChildrenChanged)
+                    {//子节点修改通知
+                        var data = await _cs.ReadConfigDataAsync();
+                        Console.WriteLine($"{Environment.NewLine}收到子节点{_cs.QueryPath}修改通知，值【{data}】");
+                    }
+                    //else
+                    //{
+                    //    var data = await _cs.ReadConfigDataAsync();
+                    //    Console.WriteLine($"{Environment.NewLine}收到其他通知{_cs.QueryPath}通知，值【{data}】");
+                    //}
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
         }
