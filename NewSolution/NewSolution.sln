@@ -102,9 +102,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication", "HttpUtil\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "HttpUtil\ConsoleApp1\ConsoleApp1.csproj", "{C2617D78-E0B7-4972-894C-6BBD71D8127B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZookConfig", "ZookConfig\ZookConfig.csproj", "{E7F2B615-D6D7-4FC9-AB05-71073CB811CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZookConfig", "ZookConfig\ZookConfig.csproj", "{E7F2B615-D6D7-4FC9-AB05-71073CB811CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZookConfigApp", "ZookConfigApp\ZookConfigApp.csproj", "{99EA9649-24F3-4C13-A3E5-2411392782AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZookConfigApp", "ZookConfigApp\ZookConfigApp.csproj", "{99EA9649-24F3-4C13-A3E5-2411392782AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWatch", "FileWatch\FileWatch.csproj", "{DF977BD7-500D-44C7-A858-AE7F0E64C658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWatchApi", "FileWatchApi\FileWatchApi.csproj", "{8A6A0130-C2D7-4554-B4BE-6C64F2A8FA58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -260,6 +264,14 @@ Global
 		{99EA9649-24F3-4C13-A3E5-2411392782AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99EA9649-24F3-4C13-A3E5-2411392782AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99EA9649-24F3-4C13-A3E5-2411392782AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF977BD7-500D-44C7-A858-AE7F0E64C658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF977BD7-500D-44C7-A858-AE7F0E64C658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF977BD7-500D-44C7-A858-AE7F0E64C658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF977BD7-500D-44C7-A858-AE7F0E64C658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A6A0130-C2D7-4554-B4BE-6C64F2A8FA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A6A0130-C2D7-4554-B4BE-6C64F2A8FA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A6A0130-C2D7-4554-B4BE-6C64F2A8FA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A6A0130-C2D7-4554-B4BE-6C64F2A8FA58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
